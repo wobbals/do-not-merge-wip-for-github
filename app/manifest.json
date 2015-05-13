@@ -1,33 +1,41 @@
 {
-    "name": "__MSG_appName__",
-    "version": "1.0.4",
-    "manifest_version": 2,
-    "description": "__MSG_appDescription__",
-    "icons": {
-        "16": "images/icon-16.png",
-        "128": "images/icon-128.png"
-    },
-    "permissions": [
-      "storage"
-    ],
-    "default_locale": "en",
-    "background": {
-        "scripts": [
-            "scripts/background.js"
-        ]
-    },
-    "options_page": "options.html",
-    "content_scripts": [
-        {
-            "matches": [
-                "https://github.com/*/*/pull/*"
-            ],
-            "js": [
-                "bower_components/jQuery/dist/jquery.js",
-                "scripts/contentscript.js"
-            ],
-            "run_at": "document_end",
-            "all_frames": false
-        }
+  "name": "__MSG_appName__",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "icons": {
+    "16": "images/steev-16.png",
+    "128": "images/steev-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "scripts/background.js"
     ]
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/opentok/*/pull/*"
+      ],
+      "js": [
+        "scripts/jquery-1.11.3.js",
+        "scripts/contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "browser_action": {
+    "default_icon": "images/steev-16.png",
+    "default_title": "Disable Merge Disabler"
+  },
+  "background": {
+       "scripts": ["scripts/background.js"],
+       "persistent": false
+   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "do-not-merge-wip-for-github",
+  "name": "do-not-merge-for-github",
   "private": true,
   "dependencies": {
     "chai": "~1.8.0",

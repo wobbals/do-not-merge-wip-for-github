@@ -1,5 +1,5 @@
 {
-  "name": "do-not-merge-wip-for-github",
+  "name": "do-not-merge-ever-for-github",
   "version": "0.0.0",
   "dependencies": {
     "jQuery": "~2.1.0"

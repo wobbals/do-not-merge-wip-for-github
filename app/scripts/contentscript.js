@@ -12,24 +12,19 @@
       if (!response) { return; }
 
       var localStorage = response.localStorage;
-      if ($('.merge-message .octicon-git-branch-delete').length > 0) {
-        if (localStorage && localStorage.protectedBranch) {
-          disabled = (new RegExp(localStorage.protectedBranch)).test($('.merge-message .css-truncate-target').text());
-        }
-        buttonHtml = '<span class="octicon octicon-git-branch-delete"></span> ' + (disabled ? 'Protected branch' : 'Delete branch');
-      } else {
-        var isWipTitle = /(\[wip\]|\[do\s*not\s*merge\])/i.test(issueTitle);
-        var isWipTaksList = $container.find('.timeline-comment:first input[type="checkbox"]:not(:checked)').length > 0;
-        var isSquashCommits = false;
-        $container.find('#commits_bucket .commit .commit-title').each(function(i, elem){
-          isSquashCommits = isSquashCommits || $(elem).text().match(/^\s*(squash|fixup)!\s/);
-        });
-        disabled = (isWipTitle || isWipTaksList || isSquashCommits);
-        buttonHtml = '<span class="octicon octicon-git-merge"></span> ' + (disabled ? 'WIP! You can\'t merge!' : 'Merge pull request');
-      }
+      disabled = true;
+      chrome.storage.local.get('disabled', function(result){
+        if(typeof result.disabled === 'undefined'){
+           disabled = true
+         } else {
+           disabled = result.disabled
+         }
+        buttonHtml = '<span class="octicon octicon-git-merge"></span> ' + (disabled ? 'Use the merge tool!' : 'Merge pull request');
 
-      $buttonMerge.attr('disabled', disabled);
-      $buttonMerge.html(buttonHtml);
+        $buttonMerge.attr('disabled', disabled);
+        $buttonMerge.html(buttonHtml);
+        
+      });      
     });
   };
 

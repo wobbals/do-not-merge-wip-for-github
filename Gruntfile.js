@@ -254,7 +254,7 @@ module.exports = function (grunt) {
     compress: {
       dist: {
         options: {
-          archive: 'package/do-not-merge-wip-for-github.zip'
+          archive: 'package/do-not-merge-for-github.zip'
         },
         files: [{
           expand: true,
@@ -266,7 +266,7 @@ module.exports = function (grunt) {
     },
     changelog: {
       options: {
-        repository: 'https://github.com/sanemat/do-not-merge-wip-for-github',
+        repository: 'https://github.com/wobbals/do-not-merge-wip-for-github',
         version: require('./app/manifest.json').version
       }
     }
